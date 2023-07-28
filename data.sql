@@ -3,7 +3,7 @@ INSERT INTO animals (
         date_of_birth,
         escape_attempts,
         neutered,
-        weight_kg
+        weight_kg species
     )
 VALUES (
         'Agumon',
@@ -32,4 +32,46 @@ VALUES (
         5,
         TRUE,
         11
+    ),
+    (
+        'Charmander',
+        '2020-02-08',
+        0,
+        FALSE,
+        -11
+    ),
+    (
+        'Plantmon',
+        '2021-11-15',
+        2,
+        TRUE,
+        -5.7
+    ),
+    (
+        'Squirtle',
+        '1993-04-02',
+        3,
+        FALSE,
+        -12.13
+    ),
+    (
+        'Angemon',
+        '2005-04-2',
+        1,
+        TRUE,
+        -45
+    ),
+    (
+        'Boarmon',
+        '2005-06-07',
+        7,
+        TRUE,
+        20.4
+    ),
+    (
+        'Ditto',
+        '2022-05-14',
+        4,
+        TRUE,
+        22
     );
