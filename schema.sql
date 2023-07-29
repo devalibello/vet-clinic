@@ -21,9 +21,13 @@ CREATE TABLE species (
     name VARCHAR(300)
 );
 
+-- The statement adds a foreign key reference to the species_id column
+
 ALTER TABLE animals
 ADD CONSTRAINT fk_species
 FOREIGN KEY (species_id) REFERENCES species(id);
+
+-- The statement creates an owners_id column and adds a foreign key reference to it
 
 ALTER TABLE animals
 ADD COLUMN owner_id INT REFERENCES owners(id);
