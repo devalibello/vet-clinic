@@ -151,3 +151,25 @@ WHERE name = 'Devimon' OR name = 'Plantmon';
 INSERT INTO animals
 SET owners_id = 4
 WHERE name = 'Charmander' OR name = 'Squirtle' OR name = 'Blossom';
+
+INSERT INTO vets (name, age, date_of_graduation) VALUES ('William Tatcher', 45, '2000-04-23');
+INSERT INTO vets (name, age, date_of_graduation) VALUES ('Maisy Smith', 26, '2019-01-17');
+INSERT INTO vets (name, age, date_of_graduation) VALUES ('Stephanie Mendez', 64, '1981-05-04');
+INSERT INTO vets (name, age, date_of_graduation) VALUES ('Jack Harkness', 38, '2008-06-08');
+
+INSERT INTO specializations (vet_id, species_id) SELECT vets.id, species.id FROM vets, species WHERE vets.name = 'William Tatcher' AND species.name = 'Pokemon';
+INSERT INTO specializations (vet_id, species_id) SELECT vets.id, species.id FROM vets, species WHERE vets.name = 'Stephanie Mendez' AND species.name IN ('Digimon', 'Pokemon');
+INSERT INTO specializations (vet_id, species_id) SELECT vets.id, species.id FROM vets, species WHERE vets.name = 'Jack Harkness' AND species.name = 'Digimon';
+
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT a.id, v.id, visit_date
+FROM animals a
+JOIN vets v ON a.name = v.name
+WHERE a.name IN ('Agumon', 'Gabumon', 'Pikachu', 'Devimon', 'Charmander', 'Plantmon', 'Squirtle', 'Angemon', 'Boarmon', 'Blossom')
+AND v.name IN ('William Tatcher', 'Stephanie Mendez', 'Jack Harkness', 'Maisy Smith')
+AND (a.name, v.name, visit_date) NOT IN (
+    SELECT animals.name, vets.name, visit_date
+    FROM visits
+    JOIN animals ON visits.animal_id = animals.id
+    JOIN vets ON visits.vet_id = vets.id
+);
