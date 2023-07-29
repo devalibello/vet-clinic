@@ -1,0 +1,1 @@
+SELECT s.name, COUNT(*) AS num_visits FROM visits v JOIN animals a ON v.animal_id = a.id JOIN species s ON a.species_id = s.id JOIN vets vet ON vet.id = v.vet_id WHERE vet.name = 'Maisy Smith' GROUP BY s.name ORDER BY num_visits DESC LIMIT 1;
